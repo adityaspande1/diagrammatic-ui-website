@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Diagrammatic-UI
 
-## Getting Started
+A powerful and flexible graph visualization library for React applications. Create stunning, interactive diagrams with ease.
 
-First, run the development server:
+## Features
+
+- 🎨 Beautiful and customizable graph visualizations
+- ⚡ High performance with optimized rendering
+- 🎯 TypeScript support for better development experience
+- 🔄 Interactive node dragging and zooming
+- 📱 Responsive and mobile-friendly
+- 🌙 Dark mode support
+- 🎮 Interactive playground for experimentation
+
+## Installation
 
 ```bash
-npm run dev
+npm install digrammatic-ui
 # or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+yarn add digrammatic-ui
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Quick Start
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```tsx
+import { Graph, Node, Edge } from 'digrammatic-ui';
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+function MyGraph() {
+  return (
+    <Graph>
+      <Node id="1" position={{ x: 100, y: 100 }} label="Node 1" />
+      <Node id="2" position={{ x: 300, y: 100 }} label="Node 2" />
+      <Edge source="1" target="2" />
+    </Graph>
+  );
+}
+```
 
-## Learn More
+## Documentation
 
-To learn more about Next.js, take a look at the following resources:
+Visit our [documentation](https://digrammatic-ui.com/docs) for detailed guides and API references.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Playground
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Try out Diagrammatic-UI in our [interactive playground](https://digrammatic-ui.com/playground) to experiment with different graph configurations and features.
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+We welcome contributions! Please see our [contributing guide](CONTRIBUTING.md) for details.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+MIT © [Your Name]
