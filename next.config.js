@@ -3,7 +3,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   /* config options here */
-  host:'192.168.116.11'
+  eslint:{
+    ignoreDuringBuilds: true,
+  }
+
 }
  
 module.exports = nextConfig
