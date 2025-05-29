@@ -565,7 +565,7 @@ export default function Home() {
             </FeatureTag>
             <h2 className="text-4xl sm:text-5xl font-bold mt-6 mb-3 text-black dark:text-white">
               Ready to Build
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-500 dark:to-blue-400 block">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-500 dark:to-blue-400 block pb-2">
                 Something Amazing?
               </span>
             </h2>

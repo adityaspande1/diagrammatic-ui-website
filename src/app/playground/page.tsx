@@ -9,12 +9,11 @@ const PlaygroundWithNoSSR = dynamic(
 
 export default function PlaygroundPage() {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
-      <header className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 ">
+      <header className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950 ">
         <div className="max-w-6xl mx-auto text-center">
-          <div className="inline-flex items-center px-4 py-1.5 mb-4 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-300 text-sm font-medium">
-            <Code className="w-4 h-4 mr-2" />
-            <span>Interactive Playground</span>
+          <div className="inline-flex items-center px-4 py-1.5 mb-4 rounded-fullark:text-blue-300 text-sm font-medium">
+            
           </div>
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-3">
             Diagrammatic-UI Playground

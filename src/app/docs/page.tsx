@@ -4,75 +4,236 @@ import { MainNav } from '@/components/navigation/main-nav'
 import { Footer } from '@/components/footer'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, Search, Book, Code, FileText, BarChart2, Download, ChevronRight, Hash, Key } from 'lucide-react'
-import { useState } from 'react'
+import { ArrowRight, Search, Book, Code, FileText, BarChart2, Download, ChevronRight, Hash, Key, X } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
 
-const DocHero = () => (
-  <section className="relative py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900 overflow-hidden border-b border-gray-200 dark:border-gray-800">
-    {/* Background elements */}
-    <div className="absolute inset-0 pointer-events-none">
-      <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-gradient-to-br from-purple-500/5 to-blue-500/5 dark:from-purple-500/10 dark:to-blue-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-to-tl from-blue-500/5 to-purple-500/5 dark:from-blue-500/10 dark:to-purple-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
-    </div>
+// Data for search functionality
+const searchableContent = [
+  {
+    title: 'Installation',
+    description: 'Step by step guide to install and setup Diagrammatic-UI in your project.',
+    href: '/docs/installation',
+    category: 'Guide'
+  },
+  {
+    title: 'Basic Concepts',
+    description: 'Learn the core concepts and principles behind Diagrammatic-UI.',
+    href: '/docs/concepts',
+    category: 'Guide'
+  },
+  {
+    title: 'Examples',
+    description: 'Explore different use cases and implementation examples.',
+    href: '/docs/examples',
+    category: 'Examples'
+  },
+  {
+    title: 'API Reference',
+    description: 'Complete API documentation for all components and utilities.',
+    href: '/docs/api',
+    category: 'Reference'
+  },
+  {
+    title: 'Customization',
+    description: 'Learn how to customize and style your graph visualizations.',
+    href: '/docs/customization',
+    category: 'Guide'
+  },
+  {
+    title: 'Advanced Usage',
+    description: 'Advanced techniques and patterns for complex visualizations.',
+    href: '/docs/advanced',
+    category: 'Guide'
+  },
+  {
+    title: 'Create Your First Graph',
+    description: 'Learn how to create a basic graph visualization with nodes and edges.',
+    href: '/docs/examples#basic-graph',
+    category: 'Tutorial'
+  },
+  {
+    title: 'Organization Charts',
+    description: 'Build hierarchical organization charts for company structures.',
+    href: '/docs/examples#org-charts',
+    category: 'Tutorial'
+  },
+  {
+    title: 'Process Flows',
+    description: 'Create workflow diagrams and decision trees with connected processes.',
+    href: '/docs/examples#process-flows',
+    category: 'Tutorial'
+  },
+  {
+    title: 'Document-Style Nodes',
+    description: 'Use rich document nodes to display structured information.',
+    href: '/docs/examples#document-nodes',
+    category: 'Tutorial'
+  }
+];
+
+const DocHero = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState<typeof searchableContent>([]);
+  const [isSearching, setIsSearching] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
+
+  // Handle clicks outside search results to close them
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        setIsSearching(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  // Search functionality
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value;
+    setSearchQuery(query);
     
-    <div className="max-w-5xl mx-auto relative z-10">
-      <div className="text-center">
-        <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-gradient-to-r from-purple-500/10 to-blue-500/10 dark:from-purple-500/20 dark:to-blue-500/20 backdrop-blur-sm border border-purple-200 dark:border-purple-900/50 text-purple-700 dark:text-purple-300 text-sm font-medium mb-6">
-          <Book className="w-4 h-4 mr-2" />
-          <span className="font-semibold">Documentation</span>
-          <span className="mx-2">•</span>
-          <span>v1.0</span>
-        </div>
-        
-        <h1 className="text-4xl md:text-5xl font-bold mb-6 text-black dark:text-white">
-          Getting Started with 
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-500 dark:to-blue-400 ml-2">
-            Diagrammatic-UI
-          </span>
-        </h1>
-        
-        <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto">
-          Learn how to use Diagrammatic-UI to create stunning graph visualizations for your React applications.
-        </p>
-        
-        <div className="relative max-w-2xl mx-auto mb-8">
-          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-            <Search className="w-5 h-5 text-gray-400" />
+    if (query.length < 2) {
+      setSearchResults([]);
+      setIsSearching(false);
+      return;
+    }
+    
+    setIsSearching(true);
+    
+    // Filter content based on search query
+    const results = searchableContent.filter(item => {
+      const titleMatch = item.title.toLowerCase().includes(query.toLowerCase());
+      const descMatch = item.description.toLowerCase().includes(query.toLowerCase());
+      const categoryMatch = item.category.toLowerCase().includes(query.toLowerCase());
+      return titleMatch || descMatch || categoryMatch;
+    });
+    
+    setSearchResults(results);
+  };
+
+  // Clear search
+  const clearSearch = () => {
+    setSearchQuery('');
+    setSearchResults([]);
+    setIsSearching(false);
+  };
+
+  return (
+    <section className="relative py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900 overflow-hidden border-b border-gray-200 dark:border-gray-800">
+      {/* Background elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-gradient-to-br from-purple-500/5 to-blue-500/5 dark:from-purple-500/10 dark:to-blue-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-to-tl from-blue-500/5 to-purple-500/5 dark:from-blue-500/10 dark:to-purple-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
+      </div>
+      
+      <div className="max-w-5xl mx-auto relative z-10">
+        <div className="text-center">
+          <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-gradient-to-r from-purple-500/10 to-blue-500/10 dark:from-purple-500/20 dark:to-blue-500/20 backdrop-blur-sm border border-purple-200 dark:border-purple-900/50 text-purple-700 dark:text-purple-300 text-sm font-medium mb-6">
+            <Book className="w-4 h-4 mr-2" />
+            <span className="font-semibold">Documentation</span>
+            <span className="mx-2">•</span>
+            <span>v1.0</span>
           </div>
-          <input
-            type="text"
-            placeholder="Search documentation..."
-            className="block w-full pl-12 pr-6 py-3 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-purple-400 dark:focus:border-purple-500 focus:ring-2 focus:ring-purple-200 dark:focus:ring-purple-800 text-black dark:text-white shadow-sm"
-          />
-        </div>
-        
-        <div className="flex flex-wrap justify-center gap-4">
-          <Link
-            href="/docs/getting-started"
-            className="inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium shadow-sm hover:shadow-md transition-all"
-          >
-            <span>Quick Start Guide</span>
-            <ArrowRight className="ml-2 w-4 h-4" />
-          </Link>
-          <Link
-            href="/docs/examples"
-            className="inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500/10 to-blue-500/10 dark:from-purple-500/20 dark:to-blue-500/20 text-purple-700 dark:text-purple-300 font-medium hover:from-purple-500/20 hover:to-blue-500/20 dark:hover:from-purple-500/30 dark:hover:to-blue-500/30 transition-all"
-          >
-            <Code className="mr-2 w-4 h-4" />
-            <span>Examples</span>
-          </Link>
-          <Link
-            href="/docs/api"
-            className="inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500/10 to-blue-500/10 dark:from-purple-500/20 dark:to-blue-500/20 text-purple-700 dark:text-purple-300 font-medium hover:from-purple-500/20 hover:to-blue-500/20 dark:hover:from-purple-500/30 dark:hover:to-blue-500/30 transition-all"
-          >
-            <Key className="mr-2 w-4 h-4" />
-            <span>API Reference</span>
-          </Link>
+          
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-black dark:text-white">
+            Getting Started with 
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-500 dark:to-blue-400 ml-2">
+              Diagrammatic-UI
+            </span>
+          </h1>
+          
+          <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto">
+            Learn how to use Diagrammatic-UI to create stunning graph visualizations for your React applications.
+          </p>
+          
+          <div ref={searchRef} className="relative max-w-2xl mx-auto mb-8">
+            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <Search className="w-5 h-5 text-gray-400" />
+            </div>
+            <input
+              type="text"
+              placeholder="Search documentation..."
+              value={searchQuery}
+              onChange={handleSearch}
+              onFocus={() => {
+                if (searchQuery.length >= 2) setIsSearching(true);
+              }}
+              className="block w-full pl-12 pr-12 py-3 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-purple-400 dark:focus:border-purple-500 focus:ring-2 focus:ring-purple-200 dark:focus:ring-purple-800 text-black dark:text-white shadow-sm"
+            />
+            {searchQuery && (
+              <button 
+                onClick={clearSearch}
+                className="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            )}
+
+            {/* Search Results Dropdown */}
+            {isSearching && (
+              <div className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-lg z-50 max-h-[400px] overflow-y-auto">
+                {searchResults.length > 0 ? (
+                  <div className="py-2">
+                    {searchResults.map((result, index) => (
+                      <Link 
+                        href={result.href} 
+                        key={index}
+                        className="block px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                        onClick={() => setIsSearching(false)}
+                      >
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <h3 className="text-sm font-medium text-black dark:text-white mb-1">{result.title}</h3>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">{result.description}</p>
+                          </div>
+                          <span className="text-xs px-2 py-1 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300">
+                            {result.category}
+                          </span>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="py-8 text-center">
+                    <p className="text-gray-500 dark:text-gray-400">No results found</p>
+                    <p className="text-sm text-gray-400 dark:text-gray-500 mt-1">Try different keywords</p>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+          
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/docs/getting-started"
+              className="inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium shadow-sm hover:shadow-md transition-all"
+            >
+              <span>Quick Start Guide</span>
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </Link>
+            <Link
+              href="/docs/examples"
+              className="inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500/10 to-blue-500/10 dark:from-purple-500/20 dark:to-blue-500/20 text-purple-700 dark:text-purple-300 font-medium hover:from-purple-500/20 hover:to-blue-500/20 dark:hover:from-purple-500/30 dark:hover:to-blue-500/30 transition-all"
+            >
+              <Code className="mr-2 w-4 h-4" />
+              <span>Examples</span>
+            </Link>
+            <Link
+              href="/docs/api"
+              className="inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500/10 to-blue-500/10 dark:from-purple-500/20 dark:to-blue-500/20 text-purple-700 dark:text-purple-300 font-medium hover:from-purple-500/20 hover:to-blue-500/20 dark:hover:from-purple-500/30 dark:hover:to-blue-500/30 transition-all"
+            >
+              <Key className="mr-2 w-4 h-4" />
+              <span>API Reference</span>
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-)
+    </section>
+  )
+}
 
 const DocCard = ({ title, description, icon: Icon, href, delay = 0 }: {
   title: string;

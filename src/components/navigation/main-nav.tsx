@@ -61,7 +61,7 @@ export function MainNav() {
             </div>
             <div className="flex items-center space-x-3 pl-2 border-l border-gray-200 dark:border-gray-800">
               <a
-                href="https://github.com/Optivance/digrammatic-ui"
+                href="https://github.com/Optivance"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"

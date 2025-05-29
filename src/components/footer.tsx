@@ -22,7 +22,7 @@ export function Footer() {
             </p>
             <div className="flex space-x-3">
               <a 
-                href="https://github.com/Optivance/digrammatic-ui" 
+                href="https://github.com/Optivance" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-2.5 rounded-full bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-purple-50 dark:hover:bg-purple-900/30 hover:text-purple-600 dark:hover:text-purple-400 shadow-sm hover:shadow transition-all"
@@ -30,15 +30,7 @@ export function Footer() {
               >
                 <Github className="w-5 h-5" />
               </a>
-              <a 
-                href="https://twitter.com/yourhandle" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="p-2.5 rounded-full bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 shadow-sm hover:shadow transition-all"
-                aria-label="Twitter"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
+             
               <a 
                 href="mailto:contact@digrammatic-ui.com" 
                 className="p-2.5 rounded-full bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-purple-50 dark:hover:bg-purple-900/30 hover:text-purple-600 dark:hover:text-purple-400 shadow-sm hover:shadow transition-all"
