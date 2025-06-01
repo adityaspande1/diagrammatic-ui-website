@@ -339,7 +339,7 @@ export default function Home() {
                 </Link>
                 
                 <a
-                  href="https://github.com/Optivance"
+                  href="https://github.com/Optivance/diagrammatic-ui"
             target="_blank"
             rel="noopener noreferrer"
                   className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 text-gray-700 dark:text-gray-200"

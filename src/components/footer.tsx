@@ -22,7 +22,7 @@ export function Footer() {
             </p>
             <div className="flex space-x-3">
               <a 
-                href="https://github.com/Optivance" 
+                href="https://github.com/Optivance/diagrammatic-ui" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-2.5 rounded-full bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-purple-50 dark:hover:bg-purple-900/30 hover:text-purple-600 dark:hover:text-purple-400 shadow-sm hover:shadow transition-all"
