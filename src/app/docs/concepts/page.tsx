@@ -202,6 +202,7 @@ export default function ConceptsPage() {
                 <p className="text-gray-700 dark:text-gray-300 text-center italic">
                   Document nodes can display code, methods, properties, and other structured information
                 </p>
+                <Image src="/docs/document-node.webp" alt="Document Node" width={400} height={400}  className="mx-auto py-2"/>
               </div>
               
               <h2 className="text-2xl font-bold mt-12 mb-4 text-black dark:text-white">
@@ -246,14 +247,18 @@ export default function ConceptsPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
                 <div className="bg-white rounded-lg p-4 border border-gray-200">
                   <h4 className="font-bold mb-2 text-black">Light Theme</h4>
-                  <div className="h-32 bg-gray-100 rounded flex items-center justify-center">
-                    <span className="text-gray-400">[Light theme preview]</span>
+                  <div className="bg-gray-100 rounded flex items-center justify-center">
+                    <span className="text-gray-400">
+                      <Image src="/docs/light-theme.webp" alt="Light Theme" width={400} height={300} className="mx-auto py-2"/>
+                    </span>
                   </div>
                 </div>
                 <div className="bg-gray-900 rounded-lg p-4 border border-gray-800">
                   <h4 className="font-bold mb-2 text-white">Dark Theme</h4>
-                  <div className="h-32 bg-gray-800 rounded flex items-center justify-center">
-                    <span className="text-gray-400">[Dark theme preview]</span>
+                  <div className="bg-gray-800 rounded flex items-center justify-center">
+                    <span className="text-gray-400">
+                      <Image src="/docs/dark-theme.webp" alt="Dark Theme" width={400} height={400} className="mx-auto "/>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -290,10 +295,10 @@ export default function ConceptsPage() {
                 Previous: Installation
               </Link>
               <Link
-                href="/docs/components"
+                href="/docs/examples"
                 className="inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium shadow-sm hover:shadow-md transition-all"
               >
-                <span>Next: Components</span>
+                <span>Next: Examples</span>
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </div>

@@ -468,11 +468,11 @@ const LargeGraphOptimized = ({ rawData }) => {
               
               <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 flex justify-between items-center">
                 <Link
-                  href="/docs/examples"
+                  href="/docs/api"
                   className="inline-flex items-center px-4 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors"
                 >
                   <ArrowRight className="h-4 w-4 mr-2 rotate-180" />
-                  Previous: Examples
+                  Previous: API Reference
                 </Link>
                 <Link
                   href="/docs/advanced"

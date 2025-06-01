@@ -18,7 +18,7 @@ const CodeBlock = ({ code, language = 'tsx' }: { code: string, language?: string
   }
 
   return (
-    <div className="relative mt-4 mb-6 rounded-lg overflow-hidden">
+    <div className="relative mt-6 mb-6 rounded-lg overflow-hidden">
       <div className="absolute top-0 right-0 p-2 z-10">
         <button
           onClick={copyToClipboard}
@@ -96,6 +96,7 @@ export default function ExamplesPage() {
                   icon={Users}
                   href="#org-charts"
                 />
+                
                 <ExampleCard
                   title="Process Flows"
                   description="Create workflow diagrams and decision trees with connected processes."
@@ -129,10 +130,9 @@ export default function ExamplesPage() {
                   <h3 className="font-medium text-black dark:text-white">Organization Chart Example</h3>
                 </div>
                 <div className="p-6">
-                  <div className="bg-gray-100 dark:bg-gray-800 rounded-lg h-64 flex items-center justify-center mb-4">
+                  <div className="bg-gray-100 dark:bg-gray-800 rounded-lg h-[400px] flex items-center justify-center mb-4">
                     <p className="text-gray-500 dark:text-gray-400 text-center">
-                      [Organization Chart Visualization]<br/>
-                      <span className="text-sm">Interactive visualization would appear here</span>
+                      <Image src="/docs/organization-charts.webp" alt="Organization Chart" width={800} height={400} className="mx-auto my-auto "/>
                     </p>
                   </div>
                   
@@ -204,7 +204,7 @@ export default function ExamplesPage() {
   theme="light"
   autoLayout="tree"
 />`} 
-                  />
+                 />
                 </div>
               </div>
               
@@ -220,11 +220,10 @@ export default function ExamplesPage() {
                 <div className="p-4 bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
                   <h3 className="font-medium text-black dark:text-white">Process Flow Example</h3>
                 </div>
-                <div className="p-6">
-                  <div className="bg-gray-100 dark:bg-gray-800 rounded-lg h-64 flex items-center justify-center mb-4">
+                <div className="p-6 ">
+                  <div className="bg-gray-100 dark:bg-gray-800 rounded-lg h-[500px] flex items-center justify-center mb-4">
                     <p className="text-gray-500 dark:text-gray-400 text-center">
-                      [Process Flow Visualization]<br/>
-                      <span className="text-sm">Interactive visualization would appear here</span>
+                      <Image src="/docs/process-flow.webp" alt="Process Flow" width={800} height={400} className="mx-auto my-auto"/>
                     </p>
                   </div>
                   
@@ -279,10 +278,9 @@ export default function ExamplesPage() {
                   <h3 className="font-medium text-black dark:text-white">Customer Journey Map Example</h3>
                 </div>
                 <div className="p-6">
-                  <div className="bg-gray-100 dark:bg-gray-800 rounded-lg h-64 flex items-center justify-center mb-4">
+                  <div className="bg-gray-100 dark:bg-gray-800 rounded-lg h-[600px] flex items-center justify-center mb-4">
                     <p className="text-gray-500 dark:text-gray-400 text-center">
-                      [Customer Journey Map Visualization]<br/>
-                      <span className="text-sm">Interactive visualization would appear here</span>
+                      <Image src="/docs/customer-journey.webp" alt="Customer Journey" width={800} height={400} className="mx-auto my-auto"/>
                     </p>
                   </div>
                   
@@ -378,36 +376,25 @@ export default function ExamplesPage() {
                   <h3 className="font-medium text-black dark:text-white">Network Topology Example</h3>
                 </div>
                 <div className="p-6">
-                  <div className="bg-gray-100 dark:bg-gray-800 rounded-lg h-64 flex items-center justify-center mb-4">
+                  <div className="bg-gray-100 dark:bg-gray-800 rounded-lg h-[600] flex items-center justify-center mb-4">
                     <p className="text-gray-500 dark:text-gray-400 text-center">
-                      [Network Topology Visualization]<br/>
-                      <span className="text-sm">Interactive visualization would appear here</span>
+                     <Image src="/docs/network-topo.webp" alt="Network Topology" height={400} width={800}/>
                     </p>
                   </div>
                   
                   <CodeBlock 
-                    code={`const networkData = {
+                    code={`const const networkData = {
   nodes: [
     { id: 'router', name: 'Main Router', type: 'root' },
     { id: 'switch1', name: 'Switch 1', type: 'branch' },
-    { id: 'switch2', name: 'Switch 2', type: 'branch' },
-    { id: 'server1', name: 'Web Server', type: 'leaf' },
-    { id: 'server2', name: 'Database Server', type: 'leaf' },
-    { id: 'server3', name: 'Application Server', type: 'leaf' },
-    { id: 'client1', name: 'Client 1', type: 'client' },
-    { id: 'client2', name: 'Client 2', type: 'client' },
+    { id: 'server1', name: 'Web Server', type: 'leaf' }
   ],
   edges: [
     { id: 'e1', source: 'router', target: 'switch1' },
-    { id: 'e2', source: 'router', target: 'switch2' },
-    { id: 'e3', source: 'switch1', target: 'server1' },
-    { id: 'e4', source: 'switch1', target: 'server2' },
-    { id: 'e5', source: 'switch2', target: 'server3' },
-    { id: 'e6', source: 'switch2', target: 'client1' },
-    { id: 'e7', source: 'switch2', target: 'client2' },
+    { id: 'e2', source: 'switch1', target: 'server1' }
   ]
+  
 };
-
 <Graph 
   data={networkData}
   autoLayout="tree"
@@ -437,10 +424,9 @@ export default function ExamplesPage() {
                   <h3 className="font-medium text-black dark:text-white">Document Nodes Example</h3>
                 </div>
                 <div className="p-6">
-                  <div className="bg-gray-100 dark:bg-gray-800 rounded-lg h-64 flex items-center justify-center mb-4">
+                  <div className="bg-gray-100 dark:bg-gray-800 rounded-lg h-[600]flex items-center justify-center mb-4">
                     <p className="text-gray-500 dark:text-gray-400 text-center">
-                      [Document Nodes Visualization]<br/>
-                      <span className="text-sm">Interactive visualization would appear here</span>
+                     <Image src="/docs/document-node.webp" alt="Document Node" width={800} height={400} className="mx-auto my-auto"/>
                     </p>
                   </div>
                   
@@ -469,28 +455,7 @@ export default function ExamplesPage() {
           ]
         }
       ]
-    },
-    {
-      id: 'doc2',
-      name: 'FishingBoat',
-      type: 'class',
-      path: 'FishingBoat.java',
-      description: 'Implementation of a fishing boat',
-      sections: [
-        {
-          id: 'methods',
-          name: 'Methods',
-          items: [
-            { id: 'method1', value: 'public void row(int speed, Direction direction)' },
-            { id: 'method2', value: 'public void fish(FishingNet net)' }
-          ]
-        }
-      ]
     }
-  ],
-  edges: [
-    { id: 'e1', source: 'doc2', target: 'doc1', label: 'implements' }
-  ]
 };
 
 <Graph 
@@ -539,10 +504,10 @@ export default function ExamplesPage() {
                 Previous: Basic Concepts
               </Link>
               <Link
-                href="/docs/customization"
+                href="/docs/api"
                 className="inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium shadow-sm hover:shadow-md transition-all"
               >
-                <span>Next: Customization</span>
+                <span>Next: API Reference</span>
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </div>
