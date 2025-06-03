@@ -10,7 +10,7 @@ const navItems = [
   { name: 'Home', href: '/' },
   { name: 'Documentation', href: '/docs' },
   { name: 'Playground', href: '/playground' },
-  { name: 'Examples', href: 'docs/examples' },
+  { name: 'Examples', href: '/docs/examples' },
 ]
 
 export function MainNav() {
@@ -110,7 +110,7 @@ export function MainNav() {
               </Link>
             ))}
             <a
-              href="https://github.com/yourusername/digrammatic-ui"
+              href="https://github.com/Optivance/diagrammatic-ui"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center px-3 py-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
